@@ -14,10 +14,14 @@ int c;
 void chances();
 
 void win(pair<int, int> game){
+    // append the counter
     n_games ++;
+    // win the game
     games[game] = 1;
     scores[(game.first - 1)] += 3;
+    // move onto next game
     chances();
+    // reverse actions done (so other rounds can begin)
     games[game] = 0;
     scores[game.first - 1] -= 3;
     n_games --;
@@ -47,8 +51,8 @@ void tie(pair<int, int> game){
 
 
 void chances(){
+    // if all games have been played
     if (n_games == 6){
-        
         c = 0;
         for (int score : scores){
             if (score >= scores[favorite-1]) c++;
@@ -58,6 +62,7 @@ void chances(){
         }
         return;
     }
+    // for every game that' not played, play it with the three possible outcomes
     for (auto game : games){
         if (game.second == 0){
             win(game.first);
@@ -80,6 +85,7 @@ int main() {
     cin >> favorite >> n_games;
 
     for (int i=0; i<n_games; i++){
+        // getting input
         cin >> t1 >> t2 >> s1 >> s2;
         if (s1 > s2){
             games[pair<int, int>(t1, t2)] = 1;
