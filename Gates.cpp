@@ -10,6 +10,9 @@ int G, P;
 set<int> ports;
 
 int main(){
+    cin.sync_with_stdio(0);
+    cin.tie(0);
+    
     int G, P;
     cin >> G >> P;
     
